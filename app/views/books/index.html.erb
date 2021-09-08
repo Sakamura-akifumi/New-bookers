@@ -2,6 +2,10 @@
   <p><%= flash[:notice] %></p>
 <% end %>
 
+<% if flash[:alert] %>
+  <p><%= flash[:alert] %></p>
+<% end %>
+
 <h1>Books</h1>
 
 <table>

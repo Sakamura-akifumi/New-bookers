@@ -11,10 +11,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = 'successfully'
-      redirect_to index
+      flash[:notice] = 'Book was successfully created'
+      redirect_to show
     else
-      flash.now[:alert] = 'error'
+      flash.now[:alert] = 'error prohibited this book from being saved'
       render :index
     end
   end
@@ -24,12 +24,12 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Blog.find(params[:id])
+    @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = 'successfully'
-      redirect_to book_path(book)
+      flash[:notice] = 'Book was successfully update'
+      redirect_to show
     else
-      flash.now[:alert] = 'error'
+      flash.now[:alert] = 'error prohibited this book from being saved'
       render :edit
     end
   end
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to books_path, notice: 'successfully'
+    redirect_to books_path, notice: 'Book was successfully destroyed'
   end
 
   private

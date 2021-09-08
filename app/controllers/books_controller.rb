@@ -9,8 +9,8 @@ class BooksController < ApplicationController
   end
 
   def create
-    @books = Book.new(book_params)
-    if @books.save
+    @book = Book.new(book_params)
+    if @book.save
       flash[:notice] = 'successfully'
       redirect_to index
     else
@@ -20,7 +20,7 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @books = Book.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def update
